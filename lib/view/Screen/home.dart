@@ -14,7 +14,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void buttonWork() {
     randomNumber = random.nextInt(3);
-    print(randomNumber);
     setState(() {});
   }
 
@@ -43,39 +42,25 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: randomNumber==1? Colors.green.withOpacity(.2):Colors.red.withOpacity(.2),
                       borderRadius: BorderRadius.circular(10)),
                   child: Center(
-                    child: randomNumber == 1? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.done_outline_sharp,
-                          color: Colors.green,
-                          size: 50,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'Congratulation!! your number is $randomNumber\n You won the lottery',
-                          textAlign: TextAlign.center,
-                        )
-                      ],
-                    ):Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.dangerous,
-                          color: Colors.red,
-                          size: 50,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          'Better luck next time. your number is $randomNumber \n Try again',
-                          textAlign: TextAlign.center,
-                        )
-                      ],
-                    ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            randomNumber==1 ? Icons.done_outline_sharp: Icons.dangerous,
+                            color: randomNumber==1?Colors.green:Colors.red,
+                            size: 50,
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            randomNumber==1 ?
+                            'Congratulation!! your number is $randomNumber\n You won the lottery':
+                            'Better luck next time. Your number is $randomNumber\n try again letter',
+                            textAlign: TextAlign.center,
+                          )
+                        ],
+                      )
                   ),
                 )
               ],
